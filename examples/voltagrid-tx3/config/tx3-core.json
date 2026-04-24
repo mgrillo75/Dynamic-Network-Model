@@ -1,0 +1,46 @@
+{
+  "site_id": "TX3-NODE1",
+  "site_name": "TX-3 Node 1 Core Simulator",
+  "nominal_bus_kv": 34.5,
+  "nominal_frequency_hz": 60.0,
+  "customer_load_mw": 24.0,
+  "settings": {
+    "irm_percent": 110.0,
+    "minimum_synchronized_generators": 6,
+    "minimum_genset_load_pct": 45.0,
+    "secondary_black_start_generators": 2
+  },
+  "gensets": [
+    {"asset_id": "G01", "name": "QPac 1 Genset 01", "priority": 1, "engine_hours": 4200, "running": true},
+    {"asset_id": "G02", "name": "QPac 1 Genset 02", "priority": 2, "engine_hours": 3900, "running": true},
+    {"asset_id": "G03", "name": "QPac 1 Genset 03", "priority": 3, "engine_hours": 3600, "running": true},
+    {"asset_id": "G04", "name": "QPac 1 Genset 04", "priority": 4, "engine_hours": 4100, "running": true},
+    {"asset_id": "G05", "name": "QPac 2 Genset 05", "priority": 5, "engine_hours": 2800, "running": true},
+    {"asset_id": "G06", "name": "QPac 2 Genset 06", "priority": 6, "engine_hours": 2600, "running": true},
+    {"asset_id": "G07", "name": "QPac 2 Genset 07", "priority": 7, "engine_hours": 2400, "running": true},
+    {"asset_id": "G08", "name": "QPac 2 Genset 08", "priority": 8, "engine_hours": 2300, "running": true},
+    {"asset_id": "G09", "name": "QPac 3 Genset 09", "priority": 9, "engine_hours": 2100, "running": false},
+    {"asset_id": "G10", "name": "QPac 3 Genset 10", "priority": 10, "engine_hours": 2000, "running": false},
+    {"asset_id": "G11", "name": "QPac 3 Genset 11", "priority": 11, "engine_hours": 1900, "running": false},
+    {"asset_id": "G12", "name": "QPac 3 Genset 12", "priority": 12, "engine_hours": 1800, "running": false}
+  ],
+  "sync_cons": [
+    {"asset_id": "SC01", "name": "ABB AMS 1400 Sync Condenser 1", "mvar_capacity": 40.0, "available": true},
+    {"asset_id": "SC02", "name": "ABB AMS 1400 Sync Condenser 2", "mvar_capacity": 40.0, "available": true}
+  ],
+  "feeders": [
+    {"asset_id": "FDR-A", "name": "Customer Feeder A", "load_mw": 8.5},
+    {"asset_id": "FDR-B", "name": "Customer Feeder B", "load_mw": 7.7},
+    {"asset_id": "FDR-C", "name": "Customer Feeder C", "load_mw": 4.6},
+    {"asset_id": "FDR-D", "name": "Customer Feeder D", "load_mw": 2.1},
+    {"asset_id": "FDR-E", "name": "Customer Feeder E", "load_mw": 1.1}
+  ],
+  "critical_aux_loads": [
+    "Sync Con E-House MCC 3",
+    "Operations Building ATS",
+    "WIC ATS",
+    "Site Lighting",
+    "Fuel Gas Distribution System",
+    "Bulk Urea Distribution System"
+  ]
+}

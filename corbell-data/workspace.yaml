@@ -1,0 +1,95 @@
+version: "1"
+
+workspace:
+  name: "my-platform"
+  root: ".."
+
+services:
+  - id: Dynamic-Network-Model
+    repo: ..
+    language: python
+    tags: [core]
+
+existing_docs:
+  auto_scan: true
+  paths: []
+  patterns:
+    - "*.design.md"
+    - "*-spec.md"
+    - "RFC-*.md"
+    - "ADR-*.md"
+    - "DESIGN.md"
+
+storage:
+  graph:
+    backend: sqlite
+    path: .corbell/workspace.db
+  embeddings:
+    backend: sqlite
+    path: .corbell/workspace.db
+  model: all-MiniLM-L6-v2
+
+spec:
+  output_dir: specs/
+  template: default
+
+integrations:
+  notion:
+    token:
+    parent_page_id:
+  linear:
+    api_key:
+    team_id:
+    default_project_id:
+  jira:
+    url:
+    email:
+    api_token:
+    project_key:
+    issue_type: Task
+
+llm:
+  # ---- Option 1: Anthropic (recommended) ----
+  provider: anthropic
+  model: claude-sonnet-4-5
+  api_key:
+  context_budget: 100000
+
+  # ---- Option 2: OpenAI ----
+  # provider: openai
+  # model: gpt-4o
+  # api_key:
+
+  # ---- Option 3: AWS Bedrock (Anthropic Claude) ----
+  # Two auth options:
+  #
+  # A) Long-term API key (simplest — paste your Bedrock API key directly):
+  # provider: aws
+  # model: us.anthropic.claude-sonnet-4-20250514-v1:0
+  # api_key:                        # get this from AWS Bedrock console
+  # aws_region: us-east-1
+  #
+  # B) IAM credentials (boto3 credential chain):
+  # provider: aws
+  # model: us.anthropic.claude-sonnet-4-20250514-v1:0
+  # aws_region: us-east-1
+  # (set AWS_ACCESS_KEY_ID + AWS_SECRET_ACCESS_KEY or use: aws configure)
+
+  # ---- Option 4: Azure OpenAI ----
+  # provider: azure
+  # model: gpt-4o
+  # api_key:
+  # azure_endpoint: https://my-resource.openai.azure.com/
+  # azure_deployment: my-gpt4o-deployment
+  # azure_api_version: "2024-02-01"
+
+  # ---- Option 5: GCP Vertex AI (Anthropic Claude) ----
+  # Auth: gcloud auth application-default login
+  # provider: gcp
+  # model: claude-sonnet-4-5@20250514
+  # gcp_project: my-gcp-project
+  # gcp_region: us-central1
+
+  # ---- Option 6: Ollama (local, no API key) ----
+  # provider: ollama
+  # model: llama3

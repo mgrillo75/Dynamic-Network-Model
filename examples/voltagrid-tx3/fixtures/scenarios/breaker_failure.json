@@ -1,0 +1,1 @@
+{"scenario": "breaker_failure", "expected_event": "breaker_failure_fast_disconnect"}
